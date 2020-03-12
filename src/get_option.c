@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 17:51:48 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/11 13:16:07 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:28:53 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ int	get_length(char *s, int type_size)
 		{
 			if (tmp == L_hh || tmp == L_ll)
 				i++;
-			if (type_size == T_INT)
+			if (type_size == T_INT || type_size == T_UINT)
 			{
 				if (tmp == L_hh || tmp == L_h || tmp == L_l || tmp == L_ll)
 					len = tmp > len ? tmp : len;

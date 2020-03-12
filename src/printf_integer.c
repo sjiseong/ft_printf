@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 15:10:48 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/11 13:09:50 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:29:16 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	printf_signed_int(long long n, t_form *form, char *s)
 		s = prepend(s, '0', form->prec - ft_strlen(s));
 		form->flag -= form->prec ? F_ZERO : 0;
 	}
-	else if (form->type == 'c' || form->type == 'C')
+	if (form->type == 'c' || form->type == 'C')
 	{
 		ft_bzero((s = (char*)malloc(2)), 2);
-		s[0] = n;
+		s[0] = (char)n;
 	}
 	if (form->flag & F_MINUS)
 	{
@@ -38,7 +38,7 @@ int	printf_signed_int(long long n, t_form *form, char *s)
 		s = add_flag_sign_integer(s, form, n);
 		s = prepend(s, ' ', form->width - ft_strlen(s));
 	}
-	return (ft_putstr(s));	
+	return (ft_putstr_free(s));	
 }
 
 int	printf_unsigned_int(unsigned long long n, t_form *form, char *s)
@@ -50,11 +50,14 @@ int	printf_unsigned_int(unsigned long long n, t_form *form, char *s)
 	else if (form->type == 'o')
 		s = ft_ulltoa_base(n, 8);
 	s = prepend(s, '0', form->prec - ft_strlen(s));
-	form->flag -= form->prec ? F_ZERO : 0;
-	if (form->flag & F_HASH  &&
+	form->flag -= form->prec != -1 ? form->flag & F_ZERO : 0;
+	if (form->type == 'X')
+		ft_capitalize(s);
+	if (form->flag & F_HASH  && n &&
 			(form->type == 'x' || form->type == 'X' || form->type == 'o'))
 	{
-		s = prepend(s, form->type, 1);
+		if (form->type == 'x' || form->type == 'X')
+			s = prepend(s, form->type, 1);
 		s = prepend(s, '0', 1);
 	}
 	if (form->flag & F_MINUS)
@@ -62,7 +65,7 @@ int	printf_unsigned_int(unsigned long long n, t_form *form, char *s)
 	else if (form->flag & F_ZERO)
 		s = prepend(s, '0', form->width - ft_strlen(s));
 	s = prepend(s, ' ', form->width - ft_strlen(s));
-	return (ft_putstr(s));
+	return (ft_putstr_free(s));
 }
 
 int	printf_integer(t_form *form, va_list ap)
@@ -71,6 +74,7 @@ int	printf_integer(t_form *form, va_list ap)
 	char		*s;
 
 	n = 0;
+	s = 0;
 	if (form->len == L_ll)
 		n = va_arg(ap, long long);
 	else if (form->len == L_l)

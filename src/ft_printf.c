@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:53:52 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/11 13:15:11 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:29:10 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 int	printf_each(t_form *form, va_list ap)
 {
 	if (form->type_size == T_INT || form->type_size == T_UINT)
-		printf_integer(form, ap);
+		return (printf_integer(form, ap));
 	else if (form->type_size == T_DOUBLE)
-		printf_double(form, ap);
+		return (printf_double(form, ap));
+	else if (form->type_size == T_STR)
+		return (printf_string(form, ap));
+	else if (form->type_size == T_PTR)
+		return (printf_pointer(form, ap));
 	return (0);
 }
 
@@ -69,17 +73,5 @@ int	ft_printf(const char *format, ...)
 	}
 */
 	va_end(ap);
-	return (0);
-}
-
-int	main()
-{
-	double f = 1234.56789;
-/*	ft_printf("%+010.5d, %10-i, %+-0 5.10c\n", 42, 42, 42);
-	printf("%+010.5d, %10-i, %+-0 5.10c\n", 42, 42, 42);
-	ft_printf("%+010.5u, %#10-x, %+-0 5.10o\n", 42, 42, 42);
-	printf("%+010.5u, %#10-x, %+-0 5.10o\n", 42, 42, 42);*/
-	ft_printf("%f, %10.5f, %+0- #f, %10.0f\n", f, f, f, f);
-	printf("%f, %10.5f, %+0- #f, %10.0f\n", f, f, f, f);
-	return 0;
+	return (ret);
 }

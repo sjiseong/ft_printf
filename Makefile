@@ -6,13 +6,13 @@
 #    By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/04 15:13:52 by sjiseong          #+#    #+#              #
-#    Updated: 2020/03/11 00:11:56 by sjiseong         ###   ########.fr        #
+#    Updated: 2020/03/11 16:04:57 by sjiseong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test
+NAME = libftprintf.a
 
-SRC = ft_printf.c format.c get_option.c printf_integer.c printf_double.c util.c
+SRC = ft_printf.c format.c get_option.c printf_integer.c printf_double.c printf_pointer.c util.c
 
 SRC_PATH = src/
 
@@ -28,13 +28,16 @@ FLAG = -Wall -Wextra -Werror
 
 LIBFT = libft/libft.a
 
+LIBFTO = libft/*.o
+
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(FLAG) -o $(NAME) $(OBJ) $(LIBFT)
+	ar rc $(NAME) $(OBJ) $(LIBFTO)
+	ranlib $(NAME)
 
 try: $(LIBFT)
-	$(CC) -I $(INC) -o $(NAME) $(SRC_POS) $(LIBFT)
+	$(CC) -I $(INC) -o test $(SRC_POS) $(LIBFT)
 
 $(OBJ): $(LIBFT)
 	$(CC) $(FLAG) -I $(INC) -c $(SRC_POS)

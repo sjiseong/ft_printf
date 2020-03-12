@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 23:01:28 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/11 13:08:37 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 15:43:54 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,13 @@ char	*add_flag_sign_double(char *s, t_form *form, double f)
 			s = prepend(s, '-', 1);
 	}
 	return (s);
+}
+
+int		ft_putstr_free(char *s)
+{
+	int	ret;
+
+	ret = ft_putstr(s);
+	free(s);
+	return (ret);
 }

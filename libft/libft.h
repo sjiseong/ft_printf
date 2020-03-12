@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 20:44:15 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/10 22:03:19 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 16:23:16 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void				ft_lstaddback(t_list **alst, t_list *new);
 void				ft_lstnewadd(t_list **lst, void *content, size_t c_size);
 char				*ft_lltoa_base(long long n, int base);
 char				*ft_ulltoa_base(unsigned long long n, int base);
+void				ft_capitalize(char *s);
 #endif

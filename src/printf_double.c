@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 23:04:47 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/11 13:16:55 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 15:44:28 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	printf_double(t_form *form, va_list ap)
 
 	if (form->len == 0 || form->len == L_l)
 		f = va_arg(ap, double);
-	else if (form->len == L_L)
+	else
 		f = va_arg(ap, long double);
 	s = ft_lltoa_base((long long)f, 10);
 	s = append(s, '.', 1);
@@ -59,5 +59,5 @@ int	printf_double(t_form *form, va_list ap)
 				((form->flag & F_PLUS || form->flag & F_SPACE) ? 1 : 0));
 	s = add_flag_sign_double(s, form, f);
 	s = prepend(s, ' ', form->width - ft_strlen(s));
-	return (ft_putstr(s));
+	return (ft_putstr_free(s));
 }

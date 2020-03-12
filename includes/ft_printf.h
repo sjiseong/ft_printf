@@ -6,7 +6,7 @@
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 16:35:13 by sjiseong          #+#    #+#             */
-/*   Updated: 2020/03/11 01:15:10 by sjiseong         ###   ########.fr       */
+/*   Updated: 2020/03/11 16:04:45 by sjiseong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,16 @@ char			*prepend(char *s, char c, int n);
 char			*append(char *s, char c, int n);
 char			*add_flag_sign_integer(char *s, t_form *form, int n);
 char			*add_flag_sign_double(char *s, t_form *form, double f);
+int				ft_putstr_free(char *s);
 
 /*
 **	printf each type
 */
 
 int				printf_integer(t_form *form, va_list ap);
+int				printf_double(t_form *form, va_list ap);
+int				printf_string(t_form *form, va_list ap);
+int				printf_pointer(t_form *form, va_list ap);
 
 /*
 **	format

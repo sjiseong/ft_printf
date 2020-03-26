@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c format.c get_option.c printf_integer.c printf_double.c printf_pointer.c util.c
+SRC = ft_printf.c format.c get_option.c printf_signed_integer.c printf_unsigned_integer.c printf_double.c printf_pointer.c util.c
 
 SRC_PATH = src/
 

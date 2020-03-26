@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lltoa_base.c                                    :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjiseong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -30,7 +30,7 @@ static void	reverse(char *str)
 	}
 }
 
-static char	*alloc_str_ll(long long n, int base)
+static char	*alloc_str(long long n, int base)
 {
 	int		size;
 	char	*str;
@@ -47,31 +47,14 @@ static char	*alloc_str_ll(long long n, int base)
 	return (str);
 }
 
-static char	*alloc_str_ull(unsigned long long n, int base)
-{
-	int		size;
-	char	*str;
-
-	size = 0;
-	if (n <= 0)
-		size++;
-	while (n)
-	{
-		n /= base;
-		size++;
-	}
-	str = (char*)malloc(sizeof(char) * (size + 1));
-	return (str);
-}
-
-char		*ft_lltoa_base(long long n, int base)
+char		*ft_itoa_base(int n, int base)
 {
 	char	*str;
 	int		i;
 	int		is_neg;
 	int		tmp;
 
-	if (!(str = alloc_str_ll(n, base)))
+	if (!(str = alloc_str(n, base)))
 		return (0);
 	is_neg = 0;
 	if (n < 0)
@@ -92,13 +75,13 @@ char		*ft_lltoa_base(long long n, int base)
 	return (str);
 }
 
-char		*ft_ulltoa_base(unsigned long long n, int base)
+char		*ft_uitoa_base(unsigned int n, int base)
 {
 	char	*str;
 	int		i;
 	int		tmp;
 
-	if (!(str = alloc_str_ull(n, base)))
+	if (!(str = alloc_str(n, base)))
 		return (0);
 	i = 0;
 	if (!n)

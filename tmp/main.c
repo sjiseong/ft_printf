@@ -23,7 +23,8 @@ int	main()
 //	printf("%llx\n", llu);
 //	printf("%s\n", ft_ulltoa_base(42, 2));
 //	printf("%010.5ua\n", i);
-	printf("%0 +-#10.5p\n", 546789);
-	printf("%0 +-#10.5x\n", 546789);
+//	printf("%0 +-#10.5p\n", 546789);
+//	printf("%0 +-#10.5x\n", 546789);
+	printf("@moulitest: %#.0x %#5.0x", 0, 0);
 	return 0;
 }

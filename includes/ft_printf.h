@@ -62,15 +62,16 @@ typedef	struct	s_form
 
 char			*prepend(char *s, char c, int n);
 char			*append(char *s, char c, int n);
-char			*add_flag_sign_integer(char *s, t_form *form, int n);
-char			*add_flag_sign_double(char *s, t_form *form, double f);
+char			*add_flag_sign_integer(char *s, t_form *form, long long n);
+char			*add_flag_sign_double(char *s, t_form *form, long double f);
 int				ft_putstr_free(char *s);
 
 /*
 **	printf each type
 */
 
-int				printf_integer(t_form *form, va_list ap);
+int				printf_signed_integer(t_form *form, va_list ap);
+int				printf_unsigned_integer(t_form *form, va_list ap);
 int				printf_double(t_form *form, va_list ap);
 int				printf_string(t_form *form, va_list ap);
 int				printf_pointer(t_form *form, va_list ap);

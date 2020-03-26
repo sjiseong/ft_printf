@@ -35,6 +35,7 @@ int	get_parameter(char *s)
 	char		*tmp;
 
 	param = 1;
+	tmp = s;
 	while (*s < '0' || *s > '9')
 		s++;
 	if (*s != '$')
@@ -111,6 +112,8 @@ int	get_precision(char *s)
 			if (is_prec && s[i] == '.')
 				return (ft_atoi(s + i + 1));
 		}
+		else if (s[i] == '.')
+			return (0);
 		i--;
 	}
 	return (-1);

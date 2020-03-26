@@ -14,15 +14,17 @@
 
 int	printf_each(t_form *form, va_list ap)
 {
-	if (form->type_size == T_INT || form->type_size == T_UINT)
-		return (printf_integer(form, ap));
+	if (form->type_size == T_INT)
+		return (printf_signed_integer(form, ap));
+	if (form->type_size == T_UINT)
+		return (printf_unsigned_integer(form, ap));
 	else if (form->type_size == T_DOUBLE)
 		return (printf_double(form, ap));
 	else if (form->type_size == T_STR)
 		return (printf_string(form, ap));
 	else if (form->type_size == T_PTR)
 		return (printf_pointer(form, ap));
-	return (0);
+	return (-1);
 }
 
 int	printf_list(t_list *lst, va_list ap)
@@ -38,7 +40,9 @@ int	printf_list(t_list *lst, va_list ap)
 		s = (char*)(lst->content);
 		if (s[0] == '%')
 		{
-			if (s[lst->content_size - 1] == '%')
+			if (ft_strchr(s, '*'))
+				return (-1);
+			if (s[lst->content_size - 1] == '%' && lst->content_size > 1)
 				ret += write(1, "%", 1);
 			else
 			{

@@ -35,7 +35,8 @@ t_list	*fmt_split(char *s)
 			tmp = s++;
 			while (*s && !(is_conversion(*s)))
 				s++;
-			s++;
+			if (*s)
+				s++;
 			tmp = ft_strndup(tmp, s - tmp);
 			ft_lstnewadd(&lst, tmp, ft_strlen(tmp));
 		}
@@ -54,9 +55,9 @@ t_list	*fmt_split(char *s)
 t_form	*get_form(char *s, char type)
 {
 	t_form	*form;
-	char	*tmp;
+//	char	*tmp;
 
-	tmp = s;
+//	tmp = s;
 	form = (t_form*)malloc(sizeof(t_form));
 	form->flag = get_flag(s);
 	form->width = get_width(s);

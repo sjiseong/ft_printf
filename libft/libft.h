@@ -89,5 +89,7 @@ void				ft_lstaddback(t_list **alst, t_list *new);
 void				ft_lstnewadd(t_list **lst, void *content, size_t c_size);
 char				*ft_lltoa_base(long long n, int base);
 char				*ft_ulltoa_base(unsigned long long n, int base);
+char				*ft_itoa_base(int n, int base);
+char				*ft_uitoa_base(unsigned int n, int base);
 void				ft_capitalize(char *s);
 #endif

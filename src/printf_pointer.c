@@ -17,7 +17,9 @@ int	printf_string(t_form *form, va_list ap)
 	char	*s;
 
 	s = va_arg(ap, char*);
-	if (form->prec < (int)ft_strlen(s))
+	if (!s)
+		s = strdup("(null)");
+	else if (form->prec < (int)ft_strlen(s))
 		s = strndup(s, form->prec);
 	else
 		s = strdup(s);

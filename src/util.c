@@ -50,7 +50,7 @@ char	*prepend(char *s, char c, int n)
 	return (new);
 }
 
-char	*add_flag_sign_integer(char *s, t_form *form, int n)
+char	*add_flag_sign_integer(char *s, t_form *form, long long n)
 {
 	if (form->type == 'd' || form->type == 'i')
 	{
@@ -58,13 +58,13 @@ char	*add_flag_sign_integer(char *s, t_form *form, int n)
 			s = prepend(s, '+', 1);
 		else if (form->flag & F_SPACE && n >= 0)
 			s = prepend(s, ' ', 1);
-		else if (((form->flag & F_PLUS) || (form->flag & F_SPACE)) && n < 0)
+		else if (n < 0)
 			s = prepend(s, '-', 1);
 	}
 	return (s);
 }
 
-char	*add_flag_sign_double(char *s, t_form *form, double f)
+char	*add_flag_sign_double(char *s, t_form *form, long double f)
 {
 	if (form->type_size == T_DOUBLE)
 	{
